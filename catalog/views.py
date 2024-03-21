@@ -2,8 +2,10 @@ from django.shortcuts import render
 #importing all model classes that we'll use to access data in all our views
 from .models import Book, Author, BookInstance, Genre
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
+@login_required
 def index(request):
     #View function of our home page
     
