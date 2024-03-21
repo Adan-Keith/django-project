@@ -1,6 +1,7 @@
 from django.shortcuts import render
 #importing all model classes that we'll use to access data in all our views
 from .models import Book, Author, BookInstance, Genre
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
