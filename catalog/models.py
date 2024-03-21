@@ -113,6 +113,8 @@ class Meta:
         # Returns the URL to access a particular author instance
         return reverse('book-detail', args=[str(self.id)])
     
+    permission = (("can_mark_returned", "Set book as returned"),)
+    
     @property
     def is_overdue(self):
         # Determines if the book borrowed is overdue based on the current date

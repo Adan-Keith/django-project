@@ -30,6 +30,7 @@ class AuthorAdmin(admin.ModelAdmin):
 admin.site.register(Author, AuthorAdmin)
     
 #...................................................................................................................................................................................    
+@admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
     list_filter = ('status', 'due_back')
     list_display = ('book', 'imprint', 'status', 'due_back', 'id')
@@ -42,7 +43,7 @@ class BookInstanceAdmin(admin.ModelAdmin):
             'fields': ('status', 'due_back')
         }),
         )
-admin.site.register(BookInstance, BookInstanceAdmin)
+# admin.site.register(BookInstance, BookInstanceAdmin)
 
 
 

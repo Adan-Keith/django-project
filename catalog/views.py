@@ -3,6 +3,8 @@ from django.shortcuts import render
 from .models import Book, Author, BookInstance, Genre
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from catalog.models import BookInstance
+from django.views import generic
 # Create your views here.
 
 @login_required
@@ -35,3 +37,11 @@ def index(request):
     #Render the HTML tempalte index.html with the data in the context variable
     return render(request, 'index.html', context=context)
 
+class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
+    model = BookInstance
+    template_name = 'catalog/bookinstance_list_borrowed_user.html'
+    paginate_by = 10
+    
+    def get_queryset(self):
+        return BookInstance.objects.filter(borrower=self.request.user, status='o').order_by('due_back')
+            
