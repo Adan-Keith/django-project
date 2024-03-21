@@ -17,6 +17,8 @@ Including another URLconf
 # This code snippet is the URL configuration for a Django project. Let me break it down for you:
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,11 +33,14 @@ from django.views.generic import RedirectView
 urlpatterns += [
     path('', RedirectView.as_view(url='catalog/', permanent=True)),
 ]
-    
-from django.conf import settings
-from django.conf.urls.static import static
 
+urlpatterns += [
+     path('accounts/', include('django.contrib.auth.urls')),
+]
+    
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
 #use include() to add paths from the catalog application
 
 
