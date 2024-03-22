@@ -56,6 +56,16 @@ from django.urls import reverse
 from catalog.forms import RenewBookForm
 
 
+# catalog/views.py
+
+from django.shortcuts import render
+from .models import Book
+
+def book_detail(request, pk):
+    book = Book.objects.get(pk=pk)
+    return render(request, 'catalog/book_detail.html', {'book': book})
+
+
 @login_required
 @permission_required
 def renew_book_librarian(request, pk):

@@ -24,27 +24,13 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
-
-
-urlpatterns += [
     path('catalog/', include('catalog.urls')),
+     path('', RedirectView.as_view(url='catalog/', permanent=True)),
+     path('accounts/', include('django.contrib.auth.urls')),
 ]
 
-urlpatterns += [
-    path('', RedirectView.as_view(url='catalog/', permanent=True)),
-]
 
-urlpatterns += [
-    path('accounts/', include('django.contrib.auth.urls'))
-]
 
-# from django.contrib.auth import views as auth_views
-# urlpatterns = [
-#     # Other URL patterns...
-#     path('accounts/password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-#     # Other URL patterns...
-# ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
