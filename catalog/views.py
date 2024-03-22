@@ -130,3 +130,11 @@ class AuthorDelete(PermissionRequiredMixin, DeleteView):
             return HttpResponseRedirect(
                 reverse("author-delete", kwargs={"pk": self.object.pk})
             )
+
+#last update of the day friday
+from django.views.generic import ListView
+class AllBorrowedBooksListView(ListView):
+    model = BookInstance
+    template_name = 'catalog/all_borrowed_books.html'  # Create this template
+    context_object_name = 'borrowed_books'
+    queryset = BookInstance.objects.filter(status='o').order_by('due_back')
