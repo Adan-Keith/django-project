@@ -1,5 +1,6 @@
+
 {% block sidebar %}
-  {{ block.super }}
+  {% comment %} {{ block.super }} {% endcomment %}
 
   {% if perms.catalog.change_author or perms.catalog.delete_author %}
   <hr>
@@ -11,6 +12,7 @@
       <li><a href="{% url 'author-delete' author.id %}">Delete author</a></li>
     {% endif %}
     </ul>
+  {% comment %} </hr> {% endcomment %}
   {% endif %}
 
 {% endblock %}

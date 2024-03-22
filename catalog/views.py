@@ -138,3 +138,11 @@ class AllBorrowedBooksListView(ListView):
     template_name = 'catalog/all_borrowed_books.html'  # Create this template
     context_object_name = 'borrowed_books'
     queryset = BookInstance.objects.filter(status='o').order_by('due_back')
+    
+from django.views.generic import DetailView
+from .models import Author
+class AuthorDetailView(DetailView):
+    model = Author
+    template_name = 'catalog/author_detail.html'
+    context_object_name = 'author'
+    # Additional customization as needed
