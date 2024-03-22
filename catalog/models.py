@@ -4,27 +4,6 @@ from django.conf import settings
 from datetime import date
 import uuid #Required forunique book instances
 
-# Create your models here.
-# class MyModelName(models.Model):
-#     # A typical class defining a model derived from the model class
-    
-#     #Fields
-#     my_field_name = models.CharField(max_length=20, help_text='Enter Field Documentation')
-    
-    
-#     #Metadata
-    
-#     class Meta:
-#         ordering = ['-my_fiel_name']
-        
-#     #Methods
-#     def get_absolute_url(self):
-#         # Retruens the URL to access a particular instance of MyModelName
-#         return reverse("model_detail-view", args=[str(self.id)])
-  
-#     def __str__(self):
-#         #string for representing the MyModelName object (in Admin Site etc.).
-#         return self.my_field_name
 
 class Genre(models.Model):
     #Model representing a book genre
